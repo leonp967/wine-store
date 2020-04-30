@@ -32,7 +32,10 @@ public class WineStoreService {
     private final FidelityClientsSorter fidelityClientsSorter;
     private final RecommendationCalculator recommendationCalculator;
 
-    public WineStoreService(WineStoreRepository repository, MockClient mockClient, ConversionService conversionService, PurchaseClientsSorter purchaseSorter, FidelityClientsSorter fidelityClientsSorter, RecommendationCalculator recommendationCalculator) throws ClientsQueryException {
+    public WineStoreService(WineStoreRepository repository, MockClient mockClient,
+                            ConversionService conversionService, PurchaseClientsSorter purchaseSorter,
+                            FidelityClientsSorter fidelityClientsSorter,
+                            RecommendationCalculator recommendationCalculator) {
         this.repository = repository;
         this.mockClient = mockClient;
         this.conversionService = conversionService;

@@ -4,6 +4,7 @@ import com.leonp967.winestore.bo.ClientBO;
 import com.leonp967.winestore.dto.ClientDTO;
 import com.leonp967.winestore.entity.ClientEntity;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 public class ClientBuilder {
@@ -34,6 +35,15 @@ public class ClientBuilder {
                 .cpf(CPF)
                 .id(ID)
                 .history(Collections.singletonList(ClientHistoryBuilder.buildBO()))
+                .build();
+    }
+
+    public static ClientBO buildBOWith2Histories() {
+        return ClientBO.builder()
+                .name(NAME)
+                .cpf(CPF)
+                .id(ID)
+                .history(Arrays.asList(ClientHistoryBuilder.buildBO(), ClientHistoryBuilder.buildBO()))
                 .build();
     }
 
