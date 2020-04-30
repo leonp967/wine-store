@@ -43,7 +43,7 @@ public class BiggestClientBO {
 
     public static final class Builder {
         private String clientCpf;
-        private Double totalPurchase;
+        private Double purchaseTotal;
 
         private Builder() {
         }
@@ -57,15 +57,15 @@ public class BiggestClientBO {
             return this;
         }
 
-        public Builder totalPurchase(Double totalPurchase) {
-            this.totalPurchase = totalPurchase;
+        public Builder purchaseTotal(Double purchaseTotal) {
+            this.purchaseTotal = purchaseTotal;
             return this;
         }
 
         public BiggestClientBO build() {
             BiggestClientBO biggestClientBO = new BiggestClientBO();
             biggestClientBO.setClientCpf(clientCpf);
-            biggestClientBO.setPurchaseTotal(totalPurchase);
+            biggestClientBO.setPurchaseTotal(purchaseTotal);
             return biggestClientBO;
         }
     }

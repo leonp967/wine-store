@@ -1,4 +1,4 @@
-package com.leonp967.winestore.bo.converter.dto;
+package com.leonp967.winestore.dto.converter;
 
 import com.leonp967.winestore.bo.SaleItemBO;
 import com.leonp967.winestore.builder.SaleItemBuilder;
@@ -9,21 +9,21 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-public class SaleItemDTOtoSaleItemBOConverterTest {
+public class SaleItemBOtoSaleItemDTOConverterTest {
 
-    private static SaleItemDTOtoSaleItemBOConverter converter;
+    private static SaleItemBOtoSaleItemDTOConverter converter;
 
     @BeforeAll
     public static void setUp() {
-        converter = new SaleItemDTOtoSaleItemBOConverter();
+        converter = new SaleItemBOtoSaleItemDTOConverter();
     }
 
     @Test
-    public void shouldConvertDTOtoBO() {
-        SaleItemDTO saleItemDTO = SaleItemBuilder.buildDTO();
-        SaleItemBO expected = SaleItemBuilder.buildBO();
+    public void shouldConvertBOtoDTO() {
+        SaleItemBO saleItemBO = SaleItemBuilder.buildBO();
+        SaleItemDTO expected = SaleItemBuilder.buildDTO();
 
-        SaleItemBO result = converter.convert(saleItemDTO);
+        SaleItemDTO result = converter.convert(saleItemBO);
 
         assertThat(result, equalTo(expected));
     }

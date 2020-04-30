@@ -1,4 +1,4 @@
-package com.leonp967.winestore.bo.converter.builder;
+package com.leonp967.winestore.builder;
 
 import com.leonp967.winestore.bo.ClientHistoryBO;
 import com.leonp967.winestore.dto.ClientHistoryDTO;
@@ -12,7 +12,7 @@ public class ClientHistoryBuilder {
     private static final String CODE = "code";
     private static final LocalDate DATE = LocalDate.of(2020, 1, 1);
     private static final Double TOTAL = 120d;
-    private static final String CLIENT_CPF = "cpf";
+    private static final String CLIENT_CPF = "111111";
     private static final Long CLIENT_ID = 1L;
 
     public static ClientHistoryDTO buildDTO() {

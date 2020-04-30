@@ -62,6 +62,16 @@ public class ClientBO {
         return Objects.hash(id, name, cpf, history);
     }
 
+    @Override
+    public String toString() {
+        return "ClientBO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", history=" + history +
+                '}';
+    }
+
     public static final class Builder {
         private Long id;
         private String name;

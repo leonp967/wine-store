@@ -1,4 +1,4 @@
-package com.leonp967.winestore.bo.converter.builder;
+package com.leonp967.winestore.builder;
 
 import com.leonp967.winestore.bo.ClientBO;
 import com.leonp967.winestore.dto.ClientDTO;
@@ -20,7 +20,15 @@ public class ClientBuilder {
                 .build();
     }
 
-    public static ClientBO buildBO() {
+    public static ClientBO buildBOWithoutHistory() {
+        return ClientBO.builder()
+                .name(NAME)
+                .cpf(CPF)
+                .id(ID)
+                .build();
+    }
+
+    public static ClientBO buildBOWithHistory() {
         return ClientBO.builder()
                 .name(NAME)
                 .cpf(CPF)

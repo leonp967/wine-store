@@ -83,6 +83,18 @@ public class ClientHistoryBO {
         return Objects.hash(code, date, items, total, clientCpf, clientId);
     }
 
+    @Override
+    public String toString() {
+        return "ClientHistoryBO{" +
+                "code='" + code + '\'' +
+                ", date=" + date +
+                ", items=" + items +
+                ", total=" + total +
+                ", clientCpf='" + clientCpf + '\'' +
+                ", clientId=" + clientId +
+                '}';
+    }
+
     public static final class Builder {
         private String code;
         private LocalDate date;

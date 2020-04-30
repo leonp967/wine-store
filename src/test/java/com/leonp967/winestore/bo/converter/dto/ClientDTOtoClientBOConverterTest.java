@@ -1,7 +1,7 @@
 package com.leonp967.winestore.bo.converter.dto;
 
 import com.leonp967.winestore.bo.ClientBO;
-import com.leonp967.winestore.bo.converter.builder.ClientBuilder;
+import com.leonp967.winestore.builder.ClientBuilder;
 import com.leonp967.winestore.dto.ClientDTO;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,7 @@ public class ClientDTOtoClientBOConverterTest {
     @Test
     public void shouldConvertDTOtoBO() {
         ClientDTO clientDTO = ClientBuilder.buildDTO();
-        ClientBO expected = ClientBuilder.buildBO();
+        ClientBO expected = ClientBuilder.buildBOWithoutHistory();
 
         ClientBO result = converter.convert(clientDTO);
 

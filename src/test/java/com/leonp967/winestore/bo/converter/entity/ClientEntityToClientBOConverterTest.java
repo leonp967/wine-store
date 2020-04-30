@@ -1,7 +1,7 @@
 package com.leonp967.winestore.bo.converter.entity;
 
 import com.leonp967.winestore.bo.ClientBO;
-import com.leonp967.winestore.bo.converter.builder.ClientBuilder;
+import com.leonp967.winestore.builder.ClientBuilder;
 import com.leonp967.winestore.entity.ClientEntity;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -22,7 +22,7 @@ class ClientEntityToClientBOConverterTest {
     @Test
     public void shouldConvertEntitytoBO() {
         ClientEntity clientEntity = ClientBuilder.buildEntity();
-        ClientBO expected = ClientBuilder.buildBO();
+        ClientBO expected = ClientBuilder.buildBOWithHistory();
 
         ClientBO result = converter.convert(clientEntity);
 

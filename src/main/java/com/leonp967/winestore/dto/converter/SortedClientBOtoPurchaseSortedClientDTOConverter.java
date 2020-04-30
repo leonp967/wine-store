@@ -6,11 +6,11 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SortedClientBOtoSortedClientDTOConverter implements Converter<SortedClientBO, PurchaseSortedClientDTO> {
+public class SortedClientBOtoPurchaseSortedClientDTOConverter implements Converter<SortedClientBO, PurchaseSortedClientDTO> {
 
     private final ClientBOtoClientDTOConverter converter;
 
-    public SortedClientBOtoSortedClientDTOConverter(ClientBOtoClientDTOConverter converter) {
+    public SortedClientBOtoPurchaseSortedClientDTOConverter(ClientBOtoClientDTOConverter converter) {
         this.converter = converter;
     }
 

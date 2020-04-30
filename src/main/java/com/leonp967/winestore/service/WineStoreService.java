@@ -78,7 +78,7 @@ public class WineStoreService {
                 .max(comparingDouble(ClientHistoryBO::getTotal))
                 .map(history -> BiggestClientBO.builder()
                                 .clientCpf(history.getClientCpf())
-                                .totalPurchase(history.getTotal())
+                                .purchaseTotal(history.getTotal())
                                 .build())
                 .orElseThrow(() -> new ClientsQueryException("No history found for the year " + year));
     }

@@ -1,4 +1,4 @@
-package com.leonp967.winestore.bo.converter.builder;
+package com.leonp967.winestore.builder;
 
 import com.leonp967.winestore.bo.SaleItemBO;
 import com.leonp967.winestore.dto.SaleItemDTO;
