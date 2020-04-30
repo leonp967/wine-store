@@ -29,8 +29,8 @@ public class ClientEntityToClientBOConverter implements Converter<ClientEntity, 
                 .build();
     }
 
-    private List<ClientHistoryBO> convertHistory(List<ClientHistoryEntity> historyEntity) {
-        return historyEntity.stream()
+    private List<ClientHistoryBO> convertHistory(List<ClientHistoryEntity> historyEntities) {
+        return historyEntities.stream()
                 .map(historyConverter::convert)
                 .collect(Collectors.toList());
     }

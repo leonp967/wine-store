@@ -2,6 +2,8 @@ package com.leonp967.winestore.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Objects;
+
 public class ClientDTO {
 
     @JsonProperty("id")
@@ -37,6 +39,21 @@ public class ClientDTO {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ClientDTO clientDTO = (ClientDTO) o;
+        return Objects.equals(id, clientDTO.id) &&
+                Objects.equals(name, clientDTO.name) &&
+                Objects.equals(cpf, clientDTO.cpf);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, cpf);
     }
 
     public static final class Builder {

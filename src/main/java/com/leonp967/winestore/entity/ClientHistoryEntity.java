@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "client_history")
@@ -79,6 +80,24 @@ public class ClientHistoryEntity implements Serializable {
 
     public void setClientCpf(String clientCpf) {
         this.clientCpf = clientCpf;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ClientHistoryEntity that = (ClientHistoryEntity) o;
+        return Objects.equals(code, that.code) &&
+                Objects.equals(date, that.date) &&
+                Objects.equals(items, that.items) &&
+                Objects.equals(total, that.total) &&
+                Objects.equals(clientCpf, that.clientCpf) &&
+                Objects.equals(client, that.client);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(code, date, items, total, clientCpf, client);
     }
 
     public static final class Builder {

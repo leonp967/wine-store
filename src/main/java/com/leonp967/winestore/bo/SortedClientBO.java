@@ -1,5 +1,7 @@
 package com.leonp967.winestore.bo;
 
+import java.util.Objects;
+
 public class SortedClientBO {
 
     private ClientBO client;
@@ -23,6 +25,20 @@ public class SortedClientBO {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SortedClientBO that = (SortedClientBO) o;
+        return Objects.equals(client, that.client) &&
+                Objects.equals(value, that.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(client, value);
     }
 
     public static final class Builder {

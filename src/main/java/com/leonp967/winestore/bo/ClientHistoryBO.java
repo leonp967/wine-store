@@ -2,6 +2,7 @@ package com.leonp967.winestore.bo;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 public class ClientHistoryBO {
 
@@ -62,6 +63,24 @@ public class ClientHistoryBO {
 
     public void setClientId(Long clientId) {
         this.clientId = clientId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ClientHistoryBO that = (ClientHistoryBO) o;
+        return Objects.equals(code, that.code) &&
+                Objects.equals(date, that.date) &&
+                Objects.equals(items, that.items) &&
+                Objects.equals(total, that.total) &&
+                Objects.equals(clientCpf, that.clientCpf) &&
+                Objects.equals(clientId, that.clientId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(code, date, items, total, clientCpf, clientId);
     }
 
     public static final class Builder {

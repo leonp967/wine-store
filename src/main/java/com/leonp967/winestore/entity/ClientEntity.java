@@ -3,6 +3,7 @@ package com.leonp967.winestore.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "client")
@@ -57,10 +58,27 @@ public class ClientEntity implements Serializable {
         this.history = history;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ClientEntity that = (ClientEntity) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(cpf, that.cpf) &&
+                Objects.equals(history, that.history);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, cpf, history);
+    }
+
     public static final class Builder {
         private Long id;
         private String name;
         private String cpf;
+        private List<ClientHistoryEntity> history;
 
         private Builder() {
         }
@@ -84,11 +102,17 @@ public class ClientEntity implements Serializable {
             return this;
         }
 
+        public Builder history(List<ClientHistoryEntity> history) {
+            this.history = history;
+            return this;
+        }
+
         public ClientEntity build() {
             ClientEntity clientEntity = new ClientEntity();
             clientEntity.setId(id);
             clientEntity.setName(name);
             clientEntity.setCpf(cpf);
+            clientEntity.setHistory(history);
             return clientEntity;
         }
     }

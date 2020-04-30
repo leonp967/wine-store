@@ -2,6 +2,7 @@ package com.leonp967.winestore;
 
 import com.leonp967.winestore.bo.ClientBO;
 import com.leonp967.winestore.bo.SaleItemBO;
+import com.leonp967.winestore.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,7 +20,7 @@ import static java.util.stream.Collectors.groupingBy;
 @Component
 public class RecommendationCalculator {
 
-    public SaleItemBO getRecommendation(ClientBO client, List<SaleItemBO> saleItems) {
+    public SaleItemBO getRecommendation(ClientBO client, List<SaleItemBO> saleItems) throws ResourceNotFoundException {
         Supplier<Stream<SaleItemBO>> supplier = () -> getClientItemsStream(client);
         Stream<SaleItemBO> clientItemsStream = supplier.get();
 
@@ -45,7 +46,7 @@ public class RecommendationCalculator {
         .filter(Optional::isPresent)
         .map(Optional::get)
         .findFirst()
-        .get();
+        .orElseThrow(() -> new ResourceNotFoundException("Recommendation not found for this client!"));
     }
 
     private Stream<SaleItemBO> getClientItemsStream(ClientBO client) {

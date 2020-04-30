@@ -1,5 +1,7 @@
 package com.leonp967.winestore.bo;
 
+import java.util.Objects;
+
 public class SaleItemBO {
 
     private String productName;
@@ -59,6 +61,24 @@ public class SaleItemBO {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SaleItemBO that = (SaleItemBO) o;
+        return Objects.equals(productName, that.productName) &&
+                Objects.equals(variety, that.variety) &&
+                Objects.equals(country, that.country) &&
+                Objects.equals(category, that.category) &&
+                Objects.equals(harvest, that.harvest) &&
+                Objects.equals(price, that.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(productName, variety, country, category, harvest, price);
     }
 
     public static final class Builder {

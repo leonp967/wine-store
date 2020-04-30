@@ -9,6 +9,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 public class ClientHistoryDTO {
 
@@ -29,6 +30,10 @@ public class ClientHistoryDTO {
 
     @JsonProperty("cliente")
     private String client;
+
+    public static Builder builder() {
+        return new Builder();
+    }
 
     public String getCode() {
         return code;
@@ -68,5 +73,72 @@ public class ClientHistoryDTO {
 
     public void setClient(String client) {
         this.client = client;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ClientHistoryDTO that = (ClientHistoryDTO) o;
+        return Objects.equals(code, that.code) &&
+                Objects.equals(date, that.date) &&
+                Objects.equals(items, that.items) &&
+                Objects.equals(total, that.total) &&
+                Objects.equals(client, that.client);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(code, date, items, total, client);
+    }
+
+    public static final class Builder {
+        private String code;
+        private LocalDate date;
+        private List<SaleItemDTO> items;
+        private Double total;
+        private String client;
+
+        private Builder() {
+        }
+
+        public static Builder aClientHistoryDTO() {
+            return new Builder();
+        }
+
+        public Builder code(String code) {
+            this.code = code;
+            return this;
+        }
+
+        public Builder date(LocalDate date) {
+            this.date = date;
+            return this;
+        }
+
+        public Builder items(List<SaleItemDTO> items) {
+            this.items = items;
+            return this;
+        }
+
+        public Builder total(Double total) {
+            this.total = total;
+            return this;
+        }
+
+        public Builder client(String client) {
+            this.client = client;
+            return this;
+        }
+
+        public ClientHistoryDTO build() {
+            ClientHistoryDTO clientHistoryDTO = new ClientHistoryDTO();
+            clientHistoryDTO.setCode(code);
+            clientHistoryDTO.setDate(date);
+            clientHistoryDTO.setItems(items);
+            clientHistoryDTO.setTotal(total);
+            clientHistoryDTO.setClient(client);
+            return clientHistoryDTO;
+        }
     }
 }

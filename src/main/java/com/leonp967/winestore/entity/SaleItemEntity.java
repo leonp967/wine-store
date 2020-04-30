@@ -2,6 +2,7 @@ package com.leonp967.winestore.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "sale_item")
@@ -112,6 +113,27 @@ public class SaleItemEntity implements Serializable {
 
     public void setHistoryCode(String historyCode) {
         this.historyCode = historyCode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SaleItemEntity that = (SaleItemEntity) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(productName, that.productName) &&
+                Objects.equals(variety, that.variety) &&
+                Objects.equals(country, that.country) &&
+                Objects.equals(category, that.category) &&
+                Objects.equals(harvest, that.harvest) &&
+                Objects.equals(price, that.price) &&
+                Objects.equals(historyCode, that.historyCode) &&
+                Objects.equals(clientHistory, that.clientHistory);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, productName, variety, country, category, harvest, price, historyCode, clientHistory);
     }
 
     public static final class Builder {

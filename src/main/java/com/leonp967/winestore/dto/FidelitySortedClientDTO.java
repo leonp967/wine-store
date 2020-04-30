@@ -2,6 +2,8 @@ package com.leonp967.winestore.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Objects;
+
 public class FidelitySortedClientDTO implements SortedClient{
 
     @JsonProperty("cliente")
@@ -9,6 +11,20 @@ public class FidelitySortedClientDTO implements SortedClient{
 
     @JsonProperty("quantidadeCompras")
     private String value;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FidelitySortedClientDTO that = (FidelitySortedClientDTO) o;
+        return Objects.equals(client, that.client) &&
+                Objects.equals(value, that.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(client, value);
+    }
 
     public static Builder builder() {
         return new Builder();

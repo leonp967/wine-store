@@ -1,5 +1,7 @@
 package com.leonp967.winestore.bo;
 
+import java.util.Objects;
+
 public class BiggestClientBO {
 
     private String clientCpf;
@@ -23,6 +25,20 @@ public class BiggestClientBO {
 
     public void setPurchaseTotal(Double purchaseTotal) {
         this.purchaseTotal = purchaseTotal;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BiggestClientBO that = (BiggestClientBO) o;
+        return Objects.equals(clientCpf, that.clientCpf) &&
+                Objects.equals(purchaseTotal, that.purchaseTotal);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(clientCpf, purchaseTotal);
     }
 
     public static final class Builder {
